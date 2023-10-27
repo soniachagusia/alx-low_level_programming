@@ -1,27 +1,15 @@
 #include "main.h"
+
 /**
- * char *_strcpy - program copies the string pointed to by src
- * @dest: copy to
- * @src: copy from
- * Return: string value
+ * _abs - computes the absolute value of an integer
+ * @n: the int to check
+ * Return: the absolute value of int
  */
-char *_strcpy(char *dest, char *src)
+int _abs(int n)
 {
-        	int a = 0;
-        	int b = 0;
-        	while (*(src + a) != '\0')
-        	{
-
-                    	a++;
-
-        	}
-        	for ( ; b < a ; b++)
-        	{
-
-                    	dest[b] = src[b];
-
-        	}
-        	dest[a] = '\0';
-        	return (dest);
-
+	if (n >= 0)
+	{
+		return (n);
+	}
+	return (-n);
 }
