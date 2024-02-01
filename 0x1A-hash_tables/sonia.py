@@ -1,29 +1,25 @@
-#!/usr/bin/python3
+#include "hash_tables.h"
 
-"""
-Module: 4-inherits_from
+/**
+ * hash_table_create - Creates a hash table.
+ * @size: The size of the array.
+ * Return: If an error occurs - NULL else pointer to the new hash table
+ */
+hash_table_t *hash_table_create(unsigned long int size)
+{
+	hash_table_t *hash_table;
+	unsigned long int idx;
 
-Contains a function that checks if an object is an instance of
-a class that inherited (directly or indirectly)
-from the specified class.
-"""
+	hash_table = malloc(sizeof(hash_table_t));
+	if (hash_table == NULL)
+		return (NULL);
 
+	hash_table->size = size;
+	hash_table->array = malloc(sizeof(hash_node_t *) * size);
+	if (hash_table->array == NULL)
+		return (NULL);
+	for (idx = 0; idx < size; idx++)
+		hash_table->array[idx] = NULL;
 
-def inherits_from(obj, a_class):
-    """
-    Checks if the object is an instance of a class that inherited
-    (directly or indirectly)
-    from the specified class.
-
-    Args:
-        obj: The object to check.
-        a_class: The class to compare against.
-
-    Returns:
-        True if the object is an instance of a class that inherited
-        (directly or indirectly)
-        from the specified class; False otherwise.
-    """
-    if issubclass(type(obj), a_class) and type(obj) != a_class:
-        return true
-    return false
+	return (hash_table);
+}
